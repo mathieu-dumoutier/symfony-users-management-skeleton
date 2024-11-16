@@ -6,13 +6,22 @@ A skeleton repository for start new project with users management features insid
 
 Created with Symfony 7.2, current version : 7.2
 
-## Start & stop
+## First start
 
 1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/) (v2.10+)
 2. Run `docker compose build --no-cache` to build fresh images
-3. Run `docker compose up --pull always -d --wait` to set up and start a fresh Symfony project
+
+## Usage
+
+1. Run `make up`
 4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-5. Run `docker compose down --remove-orphans` to stop the Docker containers.
+5. Run `make down` to stop.
+
+## Composer et bin/console commands
+
+Run composer with `make composer` and pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
+
+Run bin/console with `make sf` an pass the parameter "c=" to run a given command, example: make sf c=about
 
 ## Features
 

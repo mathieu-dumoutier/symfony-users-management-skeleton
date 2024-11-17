@@ -2,6 +2,8 @@
 
 A skeleton repository for start new project with users management features inside!
 
+You can create own with [GitHub template](https://github.com/new?template_name=symfony-users-management-skeleton&template_owner=mathieu-dumoutier)
+
 ![CI](https://github.com/mathieu-dumoutier/symfony-users-management-skeleton/workflows/CI/badge.svg)
 
 Created with Symfony 7.2, current version : 7.2
@@ -14,14 +16,14 @@ Created with Symfony 7.2, current version : 7.2
 ## Usage
 
 1. Run `make up`
-4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-5. Run `make down` to stop.
+2. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
+3. Run `make down` to stop.
 
 ## Composer et bin/console commands
 
 Run composer with `make composer` and pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
 
-Run bin/console with `make sf` an pass the parameter "c=" to run a given command, example: make sf c=about
+Run bin/console with `make sf` and pass the parameter "c=" to run a given command, example: make sf c=about
 
 ## Features
 

@@ -1,7 +1,5 @@
-**/*.log
 **/*.md
 **/*.php~
-**/*.dist.php
 **/*.dist
 **/*.cache
 **/._*
@@ -18,7 +16,6 @@
 **/docker-compose.*.yaml
 **/docker-compose.*.yml
 **/docker-compose.yaml
-**/docker-compose.yml
 **/Dockerfile
 **/Thumbs.db
 .github/

@@ -24,4 +24,4 @@ babeledit.metadata.babel
 ###> vincentlanglet/twig-cs-fixer ###
 /.twig-cs-fixer.cache
 ###< vincentlanglet/twig-cs-fixer ###
-.phpunit.result.cache
+.php-cs-fixer.cache

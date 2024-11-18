@@ -26,7 +26,6 @@
 
 <script setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { defineProps } from 'vue';
 
 defineProps({
     user: Object

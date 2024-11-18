@@ -30,13 +30,15 @@ SENDER_NAME='Acme Mail Bot'
 
 ## Composer et bin/console commands
 
-Run composer with `make composer` and pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
+Run composer with `make composer` and pass the parameter `"c="` to run a given command, example: `make composer c='req symfony/orm-pack'`
 
-Run bin/console with `make sf` and pass the parameter "c=" to run a given command, example: make sf c=about
+Run bin/console with `make sf` and pass the parameter `"c="` to run a given command, example: `make sf c=about`
 
 ## Useful commands
 
-Extract missing translations with `make sf c="translation:extract --force --format=json fr"` and `make sf c="translation:extract --force --format=json en"`
+Extract missing translations with :
+* `make sf c="translation:extract --force --format=json fr"` 
+* `make sf c="translation:extract --force --format=json en"`
 
 ## Features
 
@@ -66,7 +68,3 @@ Generate css and js files for production with `make encore c=build`
 ## License
 
 Symfony Users Management skeleton is available under the MIT License.
-
-## Credits
-
-Symfony-docker is created by [Kévin Dunglas](https://dunglas.dev), co-maintained by [Maxime Helias](https://twitter.com/maxhelias) and sponsored by [Les-Tilleuls.coop](https://les-tilleuls.coop).

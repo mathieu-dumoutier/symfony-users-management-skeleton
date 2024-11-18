@@ -43,7 +43,6 @@ jobs:
         run: curl -v --fail-with-body http://localhost
       -
         name: Check HTTPS reachability
-        if: false # Remove this line when the homepage will be configured, or change the path to check
         run: curl -vk --fail-with-body https://localhost
       -
         name: Create test database
@@ -51,6 +50,9 @@ jobs:
       -
         name: Run migrations
         run: docker compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
+      -  
+        name: Build assets
+        run: docker compose exec -T node npm install && docker compose exec -T node npm run build
       -
         name: Run PHPUnit
         run: docker compose exec -T php bin/phpunit

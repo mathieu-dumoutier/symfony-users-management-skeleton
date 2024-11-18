@@ -34,8 +34,24 @@ services:
     image: axllent/mailpit
     ports:
       - "1025"
-      - "8025"
+      - "8025:8025"
     environment:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
 ###< symfony/mailer ###
+
+  node:
+    image: node:lts-alpine
+    tty: true
+    working_dir: /app
+    depends_on:
+      - php
+    volumes:
+      - ./:/app
+    environment:
+      NODE_ENV: development
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode: host

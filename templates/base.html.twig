@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-white" lang="{{ app.locale }}">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="{% block body_class %}{% endblock %}">
+        {% block header %}
+            <header class="bg-white">
+                <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8" aria-label="Global">
+                    <div class="flex flex-1 items-center justify-end gap-x-6">
+                        {% if is_granted('ROLE_USER') %}
+                            <div {{ vue_component('ProfileDropdown', { user: { id: app.user.id, email: app.user.email }}) }}></div>
+                        {% else %}
+                            {% if registration_enabled %}
+                                <a href="{{ path('app_register') }}" class="block text-sm/6 font-semibold text-gray-900">
+                                    {{ 'Créer votre compte'|trans }}
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('app_login') }}"
+                               class="btn-primary">
+                                {{ 'Connexion'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </nav>
+            </header>
+        {% endblock %}
+
         {% block body %}{% endblock %}
+
+        <div {{ vue_component('FlashMessages', { flashesJson: app.flashes|json_encode }) }}></div>
     </body>
 </html>

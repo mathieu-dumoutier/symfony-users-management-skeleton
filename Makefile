@@ -3,11 +3,14 @@ DOCKER_COMP = docker compose
 
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php
+NODE_CONT = $(DOCKER_COMP) exec node
 
 # Executables
 PHP      = $(PHP_CONT) php
 COMPOSER = $(PHP_CONT) composer
 SYMFONY  = $(PHP) bin/console
+NPM      = $(NODE_CONT) npm
+NPM_RUN  = $(NODE_CONT) npm run
 
 # Misc
 .DEFAULT_GOAL = help
@@ -23,6 +26,7 @@ build: ## Builds the Docker images
 
 up: ## Start the docker hub in detached mode (no logs)
 	@$(DOCKER_COMP) up --detach
+	$(NPM_RUN) dev-server
 
 start: build up ## Build and start the containers
 
@@ -51,6 +55,7 @@ composer: ## Run composer, pass the parameter "c=" to run a given command, examp
 vendor: ## Install vendors according to the current composer.lock file
 vendor: c=install --prefer-dist --no-dev --no-progress --no-scripts --no-interaction
 vendor: composer
+	$(NODE_CONT) npm install
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 sf: ## List all Symfony commands or pass the parameter "c=" to run a given command, example: make sf c=about
@@ -59,3 +64,17 @@ sf: ## List all Symfony commands or pass the parameter "c=" to run a given comma
 
 cc: c=c:c ## Clear the cache
 cc: sf
+
+encore:
+	@$(eval c ?=)
+	@$(NPM_RUN) $(c)
+
+## —— NPM 🧹 ———————————————————————————————————————————————————————————————————
+
+npm:
+	@$(eval c ?=)
+	@$(NPM) $(c)
+
+npx:
+	@$(eval c ?=)
+	@$(NODE_CONT) npx $(c)

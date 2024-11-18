@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="bg-white">
+        <div class="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20">
+            <div class="mx-auto max-w-7xl pb-24 pt-10 sm:pb-32 lg:gap-x-8 lg:px-8 lg:py-40">
+                <div class="px-6 lg:px-0 lg:pt-4">
+                    {% if registration_enabled and first_launch %}
+                        <div class="mt-24 sm:mt-32 lg:mt-16">
+                            <a href="{{ path('app_register') }}" class="inline-flex space-x-6">
+                                <span class="rounded-full bg-indigo-600/10 px-3 py-1 text-sm/6 font-semibold text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
+                                    {{ 'Premier démarrage'|trans }}
+                                </span>
+                                <span class="inline-flex items-center space-x-2 text-sm/6 font-medium text-gray-600">
+                                  <span>{{ 'Créer le premier utilisateur'|trans }}</span>
+                                  <svg class="size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                  </svg>
+                                </span>
+                            </a>
+                        </div>
+                    {% endif %}
+                    <h1 class="mt-10 text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+                        {{ 'Tout ce qu\'il vous faut'|trans }}
+                    </h1>
+                    <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
+                        {{ 'Pour bien démarrer un projet Symfony, profitez de ce squelette de projet avec gestion
+                        d\'utilisateurs complète.'|trans }}
+                    </p>
+                    <div class="mt-10 flex items-center gap-x-6">
+                        <a href="#" class="btn-primary px-3.5 py-2.5">
+                            {{ 'Accès admin'|trans }}
+                        </a>
+                        <a href="https://github.com/mathieu-dumoutier/symfony-users-management-skeleton" class="text-sm/6 font-semibold text-gray-900" target="_blank">
+                            {{ 'Voir sur GitHub'|trans }}
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
+        </div>
+    </div>
+{% endblock %}

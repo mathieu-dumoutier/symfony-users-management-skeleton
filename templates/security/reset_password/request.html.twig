@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Mot de passe oublié ?'|trans }}{% endblock %}
+
+{% block body_class %}h-full{% endblock %}
+
+{% block body %}
+<div class="flex min-h-full flex-col justify-start px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h1 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+            {{ 'Mot de passe oublié ?'|trans }}
+        </h1>
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm my-3 space-y-10">
+
+        {{ form_start(request_form, { attr: { class: 'space-y-6'}}) }}
+            {{ form_errors(request_form) }}
+
+            <div>
+                {{ form_row(request_form.email, {
+                    label: 'Adresse e-mail',
+                }) }}
+            </div>
+
+            <div>
+                <small>
+                    {{ 'Saisissez votre adresse e-mail et nous allons vous envoyé un lien pour choisir un nouveau mot de passe'|trans }}
+                </small>
+            </div>
+
+            <div>
+                <button class="btn-primary flex w-full justify-center">
+                    {{ 'Envoyer un e-mail de réinitialisation du mot de passe'|trans }}
+                </button>
+            </div>
+        {{ form_end(request_form) }}
+    </div>
+</div>
+{% endblock %}

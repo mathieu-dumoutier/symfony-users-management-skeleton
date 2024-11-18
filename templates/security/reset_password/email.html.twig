@@ -1,0 +1,9 @@
+<h1>{{ 'Bonjour'|trans }}</h1>
+
+<p>{{ 'Pour choisir un nouveau mot de passe, veuillez visiter le lien suivant :'|trans }}</p>
+
+<a href="{{ url('app_reset_password', {token: reset_token.token}) }}">{{ url('app_reset_password', {token: reset_token.token}) }}</a>
+
+<p>
+    <small>{{ 'Ce lien expirera dans'|trans }} {{ reset_token.expirationMessageKey|trans(reset_token.expirationMessageData, 'ResetPasswordBundle') }}.</small>
+</p>

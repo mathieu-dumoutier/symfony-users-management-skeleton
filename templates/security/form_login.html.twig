@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Connectez-vous à votre compte'|trans }}{% endblock %}
+
+{% block body_class %}h-full{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    <div class="flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+        <div class="w-full max-w-sm space-y-10">
+            <div>
+                <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                    {{ 'Connectez-vous à votre compte'|trans }}
+                </h2>
+            </div>
+
+            {% if error %}
+                <div class="rounded-md alert-danger bg-red-50 p-4">
+                    <div class="flex">
+                        <div class="shrink-0">
+                            <svg class="size-5 text-red-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-red-800">
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <form class="space-y-6" method="POST">
+                <div class="relative -space-y-px rounded-md shadow-sm">
+                    <div class="pointer-events-none absolute inset-0 z-10 rounded-md ring-1 ring-inset ring-gray-300"></div>
+                    <div>
+                        <label for="username" class="sr-only">
+                            {{ 'Adresse e-mail'|trans }}
+                        </label>
+                        <input type="email" value="{{ last_username }}" name="_username" autocomplete="email"
+                               id="username" autofocus required
+                               class="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                               placeholder="{{ 'Adresse e-mail'|trans }}">
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">
+                            {{ 'Mot de passe'|trans }}
+                        </label>
+                        <input type="password" name="_password"
+                               id="password" autocomplete="current-password" required
+                               class="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                               placeholder="{{ 'Mot de passe'|trans }}">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" name="_remember_me" id="_remember_me" class="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                        <label for="_remember_me" class="ml-3 block text-sm/6 text-gray-900">
+                            {{ 'Rester connecté'|trans }}
+                        </label>
+                    </div>
+
+                    <div class="text-sm/6">
+                        <a href="{{ path('app_forgot_password_request') }}">
+                            {{ 'Mot de passe oublié ?'|trans }}
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                    <button type="submit" class="btn-primary flex w-full justify-center">
+                        {{ 'Connexion'|trans }}
+                    </button>
+                </div>
+            </form>
+
+            {% if registration_enabled %}
+                <p class="text-center text-sm/6 text-gray-500">
+                    {{ 'Pas de compte ?'|trans }}
+                    <a href="{{ path('app_register') }}">
+                        {{ 'Créer votre compte'|trans }}
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Choisir un nouveau mot de passe'|trans }}{% endblock %}
+
+{% block body %}
+<div class="flex min-h-full flex-col justify-start px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h1 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+            {{ 'Choisir un nouveau mot de passe'|trans }}
+        </h1>
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm my-3 space-y-10">
+        {{ form_start(reset_form, { attr: { class: 'space-y-6'}}) }}
+            {{ form_errors(reset_form) }}
+
+            <div>
+                {{ form_row(reset_form.plainPassword) }}
+            </div>
+            <div>
+                <button class="btn-primary flex w-full justify-center">
+                    {{ 'Enregistrer le mot de passe'|trans }}
+                </button>
+            </div>
+
+        {{ form_end(reset_form) }}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Créer votre compte'|trans }}{% endblock %}
+
+{% block body_class %}h-full{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                {{ 'Créer votre compte'|trans }}
+            </h2>
+        </div>
+
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm my-3 space-y-10">
+            {{ form_start(registration_form, { attr: { class: 'space-y-6'}}) }}
+                {{ form_errors(registration_form) }}
+
+                <div>
+                    {{ form_row(registration_form.email, {
+                        label: 'Adresse e-mail',
+                    }) }}
+                </div>
+
+                <div>
+                    {{ form_row(registration_form.plainPassword, {
+                        label: 'Mot de passe',
+                    }) }}
+                </div>
+
+                <div class="flex items-center">
+                    {{ form_row(registration_form.agreeTerms, {
+                        label: 'J\'accepte les conditions générales d\'utilisation'|trans,
+                        label_class: 'ml-3 block text-sm/6 text-gray-900',
+                        widget_class: 'size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                    }) }}
+                </div>
+
+                <div>
+                    <button type="submit"
+                            class="btn-primary flex w-full justify-center">
+                        {{ 'Créer un compte'|trans }}
+                    </button>
+                </div>
+            {{ form_end(registration_form) }}
+
+            <p class="text-center text-sm/6 text-gray-500">
+                {{ 'Vous avez déjà un compte ?'|trans }}
+                <a href="{{ path('app_login') }}">
+                    {{ 'Connectez-vous'|trans }}
+                </a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -39,12 +39,6 @@ jobs:
         name: Start services
         run: docker compose up --wait --no-build
       -
-        name: Check HTTP reachability
-        run: curl -v --fail-with-body http://localhost
-      -
-        name: Check HTTPS reachability
-        run: curl -vk --fail-with-body https://localhost
-      -
         name: Create test database
         run: docker compose exec -T php bin/console -e test doctrine:database:create
       -
@@ -53,6 +47,12 @@ jobs:
       -  
         name: Build assets
         run: docker compose exec -T node npm install && docker compose exec -T node npm run build
+      -
+        name: Check HTTP reachability
+        run: curl -v --fail-with-body http://localhost
+      -
+        name: Check HTTPS reachability
+        run: curl -vk --fail-with-body https://localhost
       -
         name: Run PHPUnit
         run: docker compose exec -T php bin/phpunit

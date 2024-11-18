@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Functional\Security;
 
 use App\Entity\User;
@@ -87,19 +89,19 @@ class ResetPasswordTest extends WebTestCase
 
         // Test we can set a new password
         // TODO : wait green CI on https://github.com/SymfonyCasts/reset-password-bundle
-//        $this->client->submitForm('Enregistrer le mot de passe', [
-//            'change_password_form[plainPassword][first]' => 'newStrongPassword',
-//            'change_password_form[plainPassword][second]' => 'newStrongPassword',
-//        ]);
-//
-//        self::assertResponseRedirects('/');
-//
-//        $user = $this->userRepository->findOneBy(['email' => 'me@example.com']);
-//
-//        self::assertInstanceOf(User::class, $user);
-//
-//        /** @var UserPasswordHasherInterface $passwordHasher */
-//        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
-//        self::assertTrue($passwordHasher->isPasswordValid($user, 'newStrongPassword'));
+        //        $this->client->submitForm('Enregistrer le mot de passe', [
+        //            'change_password_form[plainPassword][first]' => 'newStrongPassword',
+        //            'change_password_form[plainPassword][second]' => 'newStrongPassword',
+        //        ]);
+        //
+        //        self::assertResponseRedirects('/');
+        //
+        //        $user = $this->userRepository->findOneBy(['email' => 'me@example.com']);
+        //
+        //        self::assertInstanceOf(User::class, $user);
+        //
+        //        /** @var UserPasswordHasherInterface $passwordHasher */
+        //        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
+        //        self::assertTrue($passwordHasher->isPasswordValid($user, 'newStrongPassword'));
     }
 }

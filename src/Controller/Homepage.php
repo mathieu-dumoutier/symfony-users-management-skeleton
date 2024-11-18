@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Repository\UserRepository;
@@ -14,7 +16,7 @@ class Homepage extends AbstractController
     public function __invoke(UserRepository $userRepository): array
     {
         return [
-            'first_launch' => $userRepository->countAll() === 0,
+            'first_launch' => 0 === $userRepository->countAll(),
         ];
     }
 }

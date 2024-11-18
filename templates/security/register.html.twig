@@ -15,7 +15,7 @@
         </div>
 
         <div class="sm:mx-auto sm:w-full sm:max-w-sm my-3 space-y-10">
-            {{ form_start(registration_form, { attr: { class: 'space-y-6'}}) }}
+            {{ form_start(registration_form, {attr: {class: 'space-y-6'}}) }}
                 {{ form_errors(registration_form) }}
 
                 <div>
@@ -34,7 +34,7 @@
                     {{ form_row(registration_form.agreeTerms, {
                         label: 'J\'accepte les conditions générales d\'utilisation'|trans,
                         label_class: 'ml-3 block text-sm/6 text-gray-900',
-                        widget_class: 'size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                        widget_class: 'size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600',
                     }) }}
                 </div>
 

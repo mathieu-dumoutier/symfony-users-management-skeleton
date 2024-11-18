@@ -20,3 +20,7 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 babeledit.metadata.babel
+
+###> vincentlanglet/twig-cs-fixer ###
+/.twig-cs-fixer.cache
+###< vincentlanglet/twig-cs-fixer ###

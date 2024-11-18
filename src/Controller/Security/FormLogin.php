@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Security;
 
 use Symfony\Bridge\Twig\Attribute\Template;
@@ -14,7 +16,7 @@ class FormLogin extends AbstractController
     public function __invoke(AuthenticationUtils $authenticationUtils): array
     {
         return [
-            'last_username' =>  $authenticationUtils->getLastUsername(),
+            'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError(),
         ];
     }

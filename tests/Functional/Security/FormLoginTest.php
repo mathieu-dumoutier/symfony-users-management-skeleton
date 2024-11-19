@@ -32,7 +32,7 @@ class FormLoginTest extends WebTestCase
         $passwordHasher = $container->get('security.user_password_hasher');
 
         $user = (new User())->setEmail('email@example.com');
-        $user->setPassword($passwordHasher->hashPassword($user, 'password'))->setVerified(true);
+        $user->setPassword($passwordHasher->hashPassword($user, 'password'))->setIsVerified(true);
 
         $em->persist($user);
         $em->flush();

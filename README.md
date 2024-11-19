@@ -48,6 +48,7 @@ Extract missing translations with :
 * Form login
 * Registration and verification by email (enabled by default, but disabled with `REGISTRATION_ENABLED=0` env var)
 * Password reset
+* Easy impersonate for user with `ROLE_SUPER_ADMIN` or `ROLE_ALLOWED_TO_SWITCH`
 * Flash messages displayed in [tailwind notifications](https://tailwindui.com/components/application-ui/overlays/notifications)
 * Internationalization share between Symfony and Vue (with vue-i18n) in `assets/locales` directory
 

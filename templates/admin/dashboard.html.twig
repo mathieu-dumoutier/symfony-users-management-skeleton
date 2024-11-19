@@ -1,0 +1,21 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_content %}
+    <div class=" py-6 sm:py-12">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+                <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+                    <dt class="text-base/7 text-gray-600 dark:text-gray-400">{{ 'Utilisateurs actifs'|trans }}</dt>
+                    <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white  sm:text-5xl flex items-center place-content-center space-x-2">
+                        <div class="w-10 h-10">
+                            <svg fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"></path>
+                            </svg>
+                        </div>
+                        <span>1</span>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

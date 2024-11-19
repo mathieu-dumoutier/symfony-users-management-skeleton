@@ -24,3 +24,24 @@ document.addEventListener('vue:before-mount', (event) => {
 
   app.use(i18n);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  if ('dark' === localStorage['ea/colorScheme']) {
+    document.body.classList.add('dark');
+    return;
+  }
+
+  if ('auto' === localStorage['ea/colorScheme']) {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDarkScheme) {
+      document.body.classList.add('dark');
+    }
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (event.target.matches('[data-ea-color-scheme]')) {
+    const colorScheme = event.target.getAttribute('data-ea-color-scheme');
+    document.body.classList[colorScheme === 'dark' ? 'add' : (colorScheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'add' :'remove')]('dark');
+  }
+});

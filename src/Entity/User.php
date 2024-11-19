@@ -85,6 +85,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
+    public function hasRole(string $role): bool
+    {
+        return \in_array($role, $this->getRoles(), true);
+    }
+
     /**
      * @param list<string> $roles
      */
@@ -124,7 +129,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->isVerified;
     }
 
-    public function setVerified(bool $isVerified): static
+    public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
 

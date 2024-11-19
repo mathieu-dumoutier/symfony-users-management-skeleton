@@ -11,6 +11,8 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 
+use function Symfony\Component\Clock\now;
+
 /**
  * @extends ServiceEntityRepository<User>
  */
@@ -43,5 +45,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->select('count(u.id)')
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    public function countEnabled(): int
+    {
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->where('u.isVerified = true')
+            ->andWhere('u.disabledAt IS NULL OR u.disabledAt > :now')
+            ->setParameter('now', now())
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getEnabled(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.isVerified = true')
+            ->andWhere('u.disabledAt IS NULL OR u.disabledAt > :now')
+            ->setParameter('now', now())
+            ->getQuery()
+            ->getResult();
     }
 }

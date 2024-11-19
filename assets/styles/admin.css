@@ -1,0 +1,81 @@
+/* Dans EasyAdmin, commun thème clair et sombre */
+body.ea {
+    @apply antialiased;
+
+    [type='checkbox']:checked, [type='radio']:checked {
+        background-size: inherit;
+    }
+    .datagrid tr .dropdown-toggle.show,
+    .datagrid tr .dropdown-toggle:hover,
+    .datagrid tr:not(.selected-row):hover .dropdown-toggle {
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    aside.sidebar {
+
+        #header-logo a.logo {
+            @apply font-semibold text-xl/6;
+        }
+
+        #main-menu .menu-item a {
+            @apply flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold;
+            .menu-icon {
+                @apply me-0;
+            }
+        }
+    }
+
+    .btn.btn-primary {
+        @apply rounded-md px-3 py-1.5 shadow-sm text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    }
+}
+
+/* Dans EasyAdmin, avec thème clair */
+body.ea[style="color-scheme: light;"] {
+    aside.sidebar {
+        @apply bg-indigo-600 text-white;
+
+        #header-logo a.logo {
+            @apply text-white;
+        }
+
+        #main-menu .menu-item a {
+            @apply text-indigo-200 hover:text-white hover:bg-indigo-700;
+            .menu-icon {
+                @apply text-indigo-200 hover:text-white;
+            }
+        }
+
+        #main-menu .menu-item.active {
+            @apply bg-indigo-700 text-white;
+            .menu-icon, a {
+                @apply text-white;
+            }
+        }
+    }
+
+    .btn.btn-primary {
+        @apply bg-indigo-600 text-white hover:bg-indigo-500 hover:text-white focus-visible:outline-indigo-600;
+    }
+}
+
+/* Dans EasyAdmin, avec thème clair et sidebar rétrécie */
+body.ea[style="color-scheme: light;"].ea-sidebar-width-compact {
+    aside.sidebar {
+        #main-menu .menu-item a {
+            @apply text-gray-600  hover:bg-white hover:text-gray-600;
+            .menu-icon {
+                @apply text-white hover:text-indigo-600;
+            }
+        }
+
+        #main-menu .menu-item.active {
+            @apply bg-white text-white hover:text-gray-600;
+            .menu-icon {
+                @apply text-indigo-600 hover:text-indigo-600;
+            }
+        }
+    }
+}

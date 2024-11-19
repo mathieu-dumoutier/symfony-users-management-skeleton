@@ -1,0 +1,33 @@
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+{% block flash_messages %}
+    <div {{ vue_component('FlashMessages', {flashesJson: app.flashes|json_encode}) }}></div>
+{% endblock %}
+
+{% block user_menu %}
+    {{ parent() }}
+    {% if is_granted('ROLE_ALLOWED_TO_SWITCH') %}
+        <li>
+            <hr class="dropdown-divider">
+            <div {{ vue_component('Admin/SwitchUser') }}></div>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block wrapper_wrapper %}
+    {% if is_granted('IS_IMPERSONATOR') %}
+        <div class="flex items-center place-content-center gap-x-6 bg-red-500 px-6 py-2.5 sm:px-3.5">
+            <p class="text-sm/6 text-white">
+                <strong class="font-semibold">{{ 'Attention'|trans }}</strong>
+                <svg viewBox="0 0 2 2" class="mx-2 inline size-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>
+                {{ "Vous utilisez l'application en tant que"|trans }}
+                {{ app.user.userIdentifier }}
+                <a class="font-semibold hover:text-white hover:underline"
+                    href="{{ impersonation_exit_path() }}">
+                    {{ 'user.exit_impersonation'|trans({}, 'EasyAdminBundle') }} &nbsp;&rarr;
+                </a>
+            </p>
+        </div>
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

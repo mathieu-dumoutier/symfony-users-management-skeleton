@@ -5,6 +5,34 @@ body.ea {
     [type='checkbox']:checked, [type='radio']:checked {
         background-size: inherit;
     }
+
+    .modal {
+        padding-top: 5rem;
+        .modal-dialog {
+            @apply !max-w-3xl rounded-lg bg-white shadow-xl w-full ;
+            width: 600px;
+            .modal-content {
+                @apply px-4 pb-4 pt-5 max-w-full text-left sm:my-8 sm:w-full sm:p-6;
+                .modal-header, .modal-footer {
+                    @apply !bg-transparent border-none;
+                }
+                .modal-body {
+                    @apply !py-3;
+                    .filter-field {
+                        @apply border-none;
+                        .filter-heading a {
+                            @apply text-gray-600;
+                        }
+                    }
+                }
+            }
+        }
+
+        h5.modal-title {
+            @apply !text-lg/6 font-semibold;
+        }
+    }
+
     .datagrid tr .dropdown-toggle.show,
     .datagrid tr .dropdown-toggle:hover,
     .datagrid tr:not(.selected-row):hover .dropdown-toggle {
@@ -13,22 +41,39 @@ body.ea {
         background-color: transparent;
     }
 
-    aside.sidebar {
+    .datagrid {
+        td.field-association, th.header-for-field-association {
+            text-align: center!important;
+        }
+    }
 
+    aside.sidebar {
         #header-logo a.logo {
             @apply font-semibold text-xl/6;
         }
 
-        #main-menu .menu-item a {
-            @apply flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold;
+        #main-menu .menu-item {
+            @apply my-2 px-0;
+            a {
+                @apply flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold antialiased;
+            }
             .menu-icon {
                 @apply me-0;
             }
         }
+
+        #main-menu .menu-header span.menu-header-contents .menu-item-label {
+            @apply text-xs/6 font-semibold text-indigo-200;
+            text-transform: none;
+        }
     }
 
-    .btn.btn-primary {
+    .btn {
         @apply rounded-md px-3 py-1.5 shadow-sm text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+
+        &:not(.btn-secondary):not(.btn-link):not(.action-*) {
+            @apply focus:!text-white;
+        }
     }
 }
 
@@ -41,38 +86,50 @@ body.ea[style="color-scheme: light;"] {
             @apply text-white;
         }
 
-        #main-menu .menu-item a {
-            @apply text-indigo-200 hover:text-white hover:bg-indigo-700;
-            .menu-icon {
+        #main-menu .menu-item {
+            a, .menu-icon {
                 @apply text-indigo-200 hover:text-white;
             }
         }
 
         #main-menu .menu-item.active {
-            @apply bg-indigo-700 text-white;
-            .menu-icon, a {
+            @apply bg-transparent;
+            a {
+                @apply bg-indigo-700 text-white font-semibold;
+            }
+            .menu-icon {
                 @apply text-white;
             }
         }
     }
 
-    .btn.btn-primary {
-        @apply bg-indigo-600 text-white hover:bg-indigo-500 hover:text-white focus-visible:outline-indigo-600;
+    .btn {
+        &.btn-primary {
+            @apply bg-indigo-600 text-white hover:bg-indigo-500 hover:text-white focus-visible:outline-indigo-600 ;
+        }
     }
 }
 
 /* Dans EasyAdmin, avec thème clair et sidebar rétrécie */
 body.ea[style="color-scheme: light;"].ea-sidebar-width-compact {
     aside.sidebar {
-        #main-menu .menu-item a {
-            @apply text-gray-600  hover:bg-white hover:text-gray-600;
+        #main-menu .menu-item {
+            @apply ps-2;
+
+            a {
+                @apply text-gray-600  hover:bg-white hover:text-gray-600 antialiased;
+            }
+
             .menu-icon {
                 @apply text-white hover:text-indigo-600;
             }
         }
 
-        #main-menu .menu-item.active {
-            @apply bg-white text-white hover:text-gray-600;
+        #main-menu .menu-item.active  {
+            @apply bg-white;
+            a {
+                @apply rounded-none hover:rounded-md text-gray-600 bg-white hover:text-gray-600 antialiased;
+            }
             .menu-icon {
                 @apply text-indigo-600 hover:text-indigo-600;
             }

@@ -1,6 +1,6 @@
 <template>
     <!-- Global notification live region -->
-    <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+    <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6" style="z-index: 1000;">
         <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
             <!-- Flash messages notifications panel -->
             <template v-for="(flashs, type) in flashes">

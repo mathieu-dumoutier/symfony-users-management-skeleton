@@ -1,0 +1,25 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}{{ 'Matrice de droits'|trans }}{% endblock %}
+
+{% block page_content %}
+    {% set groups = [] %}
+    {% for group in group_entities %}
+        {% set groups = [{id: group.id, name: group.name}]|merge(groups) %}
+    {% endfor %}
+
+    {% set roles = [] %}
+    {% for role in role_entities %}
+        {% set roles = [{
+            id: role.id,
+            subject: role.subject,
+            name: role.name,
+            groups: role.groups|map(g => g.id),
+        }]|merge(roles) %}
+    {% endfor %}
+
+    <div {{ vue_component('Admin/Group/Matrix', {
+        groups: groups,
+        roles: roles,
+    }) }}></div>
+{% endblock %}

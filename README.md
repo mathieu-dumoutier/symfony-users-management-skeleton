@@ -2,6 +2,8 @@
 
 A skeleton repository for start new project with users management features inside!
 
+![Roles and group matrix](/docs/roles-matrix.png)
+
 You can create own with [GitHub template](https://github.com/new?template_name=symfony-users-management-skeleton&template_owner=mathieu-dumoutier)
 
 ![CI](https://github.com/mathieu-dumoutier/symfony-users-management-skeleton/workflows/CI/badge.svg)
@@ -15,8 +17,6 @@ Created with Symfony 7.2, current version : 7.2
 3. Create a `.env.local` file with the following customized content:
 ```dotenv
 APP_SECRET=your_secret
-SENDER_EMAIL=mailer@your-domain.com
-SENDER_NAME='Acme Mail Bot'
 ```
 4. Run `make up`
 5. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
@@ -43,14 +43,17 @@ Extract missing translations with :
 ## Features
 
 * All features of [dunglas/symfony-docker](https://github.com/dunglas/symfony-docker)
+* EasyAdmin 4 with bootstrap theme
 * Tailwind CSS with Webpack Encore and Hot Module Replacement (HMR) enabled
-* Entities for users management : User, Role, Permission
+* Entities for users management : User, Group, Role
 * Form login
 * Registration and verification by email (enabled by default, but disabled with `REGISTRATION_ENABLED=0` env var)
 * Password reset
-* Easy impersonate for user with `ROLE_SUPER_ADMIN` or `ROLE_ALLOWED_TO_SWITCH`
+* Easy impersonate for user with the role `ROLE_ALLOWED_TO_SWITCH`
+* Roles and groups matrix
 * Flash messages displayed in [tailwind notifications](https://tailwindui.com/components/application-ui/overlays/notifications)
 * Internationalization share between Symfony and Vue (with vue-i18n) in `assets/locales` directory
+* CRUD interfaces for env variable configuration (first ones are `APP_NAME`, `REGISTRATION_ENABLED`, `MAILER_DSN`, `SENDER_EMAIL` and `SENDER_NAME`)
 
 **Enjoy!**
 

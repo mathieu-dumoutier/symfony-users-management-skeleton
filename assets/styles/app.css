@@ -1,8 +1,8 @@
+@import 'admin.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import 'admin.css';
 
 :root {
     --font-family-base: 'InterVariable', sans-serif;
@@ -12,8 +12,12 @@
 
 /* Hors EasyAdmin */
 body:not(.ea) {
+    .btn-primary, .btn-secondary {
+        @apply rounded-md px-3 py-1.5 shadow-sm text-sm/6 font-semibold;
+    }
+
     .btn-primary {
-        @apply rounded-md bg-indigo-600 px-3 py-1.5 shadow-sm text-sm/6 font-semibold text-white hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
+        @apply bg-indigo-600  text-white hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600;
     }
 
     a:not([role="button"]):not(.btn-primary) {

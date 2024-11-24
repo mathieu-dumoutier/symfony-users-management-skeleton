@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller\Security;
 
+use App\DataFixtures\AppFixtures;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Symfony\Bridge\Twig\Attribute\Template;
@@ -22,13 +24,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/register', name: 'app_register', condition: '1 == %registration_enabled%')]
 class Register extends AbstractController
 {
+    public function __construct(
+        private TranslatorInterface $translator,
+        private string $appName,
+    ) {
+    }
+
     #[Template('security/register.html.twig')]
     public function __invoke(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
         UserRepository $userRepository,
+        RoleRepository $roleRepository,
         EmailVerifier $emailVerifier,
-        TranslatorInterface $translator,
         array $sender,
     ): array|RedirectResponse {
         $user = new User();
@@ -44,7 +52,8 @@ class Register extends AbstractController
 
             // if it's the first user, make it a super admin
             if (0 === $userRepository->countAll()) {
-                $user->setRoles(['ROLE_SUPER_ADMIN']);
+                $user->addRole($roleRepository->findOneBy(['key' => AppFixtures::ROLE_SUPER_ADMIN]));
+                $user->addRole($roleRepository->findOneBy(['key' => AppFixtures::ROLE_ADMIN]));
             }
 
             $userRepository->save($user);
@@ -55,13 +64,13 @@ class Register extends AbstractController
                     (new TemplatedEmail())
                         ->from(new Address($sender['email'], $sender['name']))
                         ->to((string) $user->getEmail())
-                        ->subject($translator->trans('Confirmez votre adresse e-mail pour activer votre compte'))
+                        ->subject($this->appName.' - '.$this->translator->trans('Confirmez votre adresse e-mail pour activer votre compte'))
                         ->htmlTemplate('security/confirmation_email.html.twig')
                 );
 
-                $this->addFlash('success', $translator->trans('Vérifiez votre boîte mail pour activer votre compte.'));
+                $this->addFlash('success', $this->translator->trans('Vérifiez votre boîte mail pour activer votre compte.'));
             } catch (TransportException $exception) {
-                $this->addFlash('warning', $translator->trans('Un problème est survenu lors de l\'envoi du mail pour activer votre compte. Détail : ').$exception->getMessage());
+                $this->addFlash('warning', $this->translator->trans('Un problème est survenu lors de l\'envoi du mail pour activer votre compte. Détail : ').$exception->getMessage());
             }
 
             return $this->redirectToRoute('app_register');

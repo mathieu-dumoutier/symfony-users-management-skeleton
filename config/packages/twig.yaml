@@ -2,6 +2,7 @@ twig:
     file_name_pattern: '*.twig'
     form_themes: ['base/form/tailwind_3_layout.html.twig']
     globals:
+        app_name: '%app_name%'
         registration_enabled: '%registration_enabled%'
 
 when@test:

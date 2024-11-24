@@ -18,9 +18,10 @@ Created with Symfony 7.2, current version : 7.2
 ```dotenv
 APP_SECRET=your_secret
 ```
-4. Run `make up`
-5. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-6. Create first user admin
+4. Run `make vendor`
+5. Run `make up`
+6. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
+7. Create first user admin
 
 ## Usage
 

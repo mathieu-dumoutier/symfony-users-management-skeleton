@@ -21,8 +21,8 @@ class EmailResetPassword
         private MailerInterface $mailer,
         private TranslatorInterface $translator,
         private ResetPasswordHelperInterface $resetPasswordHelper,
-        private array $sender,
         private string $appName,
+        private array $sender,
     ) {
     }
 

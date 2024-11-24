@@ -26,7 +26,7 @@ class Register extends AbstractController
 {
     public function __construct(
         private TranslatorInterface $translator,
-        private string $appName = '',
+        private string $appName,
     ) {
     }
 

@@ -20,7 +20,7 @@ class Dashboard extends AbstractDashboardController
 {
     public function __construct(
         private UserRepository $userRepository,
-        private string $appName = '',
+        private ?string $appName,
     ) {
     }
 

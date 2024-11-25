@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Trait\BlameableEntity;
 use App\Repository\ConfigurationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: ConfigurationRepository::class)]
 class Configuration
 {
+    use BlameableEntity;
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\Column(length: 35, unique: true)]
     private ?string $key = null;

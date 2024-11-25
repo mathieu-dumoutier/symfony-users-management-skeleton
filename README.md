@@ -71,6 +71,19 @@ docker compose exec -T php bin/console -e test doctrine:migrations:migrate --no-
 
 Generate css and js files for production with `make encore c=build`
 
+## Upgrade when template is updated
+
+You can use [*template-sync*](https://github.com/coopTilleuls/template-sync):
+
+1. Run the script to synchronize your project with the latest version of the skeleton:
+
+```console
+curl -sSL https://raw.githubusercontent.com/coopTilleuls/template-sync/main/template-sync.sh | sh -s -- https://github.com/mathieu-dumoutier/symfony-users-management-skeleton
+```
+
+2. Resolve conflicts, if any
+3. Run `git cherry-pick --continue`
+
 ## License
 
 Symfony Users Management skeleton is available under the MIT License.

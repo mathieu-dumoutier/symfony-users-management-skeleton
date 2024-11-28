@@ -32,6 +32,11 @@
 	"Is Verified": "Verified",
 	"J'accepte les conditions générales d'utilisation": "I agree terms",
 	"Key": "Unique key",
+	"La modification d'un groupe entraîne la déconnexion de tout ses membres": {
+		" Pour modifier le(s) groupe(s) dont vous faites parti, nous vous conseillons de vous retirer temporairement de ce groupe afin de ne pas être déconnecté à chaque modification": {
+			" Prenez-garde de toujours être dans un groupe vous permettant de conserver l'accès à cette interface": "Modifying a group disconnects all its members. To modify the group(s) to which you belong, we advise you to temporarily remove yourself from this group so as not to be disconnected each time you modify it. Make sure you are always in a group that allows you to retain access to this interface."
+		}
+	},
 	"Matrice de droits": "Rights Matrix",
 	"Mot de passe": "Password",
 	"Mot de passe (confirmation)": "Password (confirmation)",
@@ -67,5 +72,6 @@
 	"Votre compte a été activé.": "Your account has been activated",
 	"Votre lien pour choisir un nouveau mot de passe": "Your link for reset your password",
 	"Vous avez déjà un compte ?": "Have you already an account?",
-	"Vous utilisez l'application en tant que": "You are using the application as"
+	"Vous utilisez l'application en tant que": "You are using the application as",
+  "warning-matrix": "Modifying a group disconnects all its members. To modify the group(s) to which you belong, we advise you to temporarily remove yourself from this group so as not to be disconnected each time you modify it. <strong>Make sure you are always in a group that allows you to retain access to this interface.</strong>"
 }

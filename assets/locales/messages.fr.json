@@ -32,6 +32,11 @@
 	"Is Verified": "Vérifié",
 	"J'accepte les conditions générales d'utilisation": "J'accepte les conditions générales d'utilisation",
 	"Key": "Clé unique",
+	"La modification d'un groupe entraîne la déconnexion de tout ses membres": {
+		" Pour modifier le(s) groupe(s) dont vous faites parti, nous vous conseillons de vous retirer temporairement de ce groupe afin de ne pas être déconnecté à chaque modification": {
+			" Prenez-garde de toujours être dans un groupe vous permettant de conserver l'accès à cette interface": "La modification d'un groupe entraîne la déconnexion de tout ses membres. Pour modifier le(s) groupe(s) dont vous faites parti, nous vous conseillons de vous retirer temporairement de ce groupe afin de ne pas être déconnecté à chaque modification. Prenez-garde de toujours être dans un groupe vous permettant de conserver l'accès à cette interface."
+		}
+	},
 	"Matrice de droits": "Matrice de droits",
 	"Mot de passe": "Mot de passe",
 	"Mot de passe (confirmation)": "Mot de passe (confirmation)",
@@ -67,5 +72,6 @@
 	"Votre compte a été activé.": "Votre compte a été activé.",
 	"Votre lien pour choisir un nouveau mot de passe": "Votre lien pour choisir un nouveau mot de passe",
 	"Vous avez déjà un compte ?": "Vous avez déjà un compte ?",
-	"Vous utilisez l'application en tant que": "Vous utilisez l'application en tant que"
+	"Vous utilisez l'application en tant que": "Vous utilisez l'application en tant que",
+  "warning-matrix": "La modification d'un groupe entraîne la déconnexion de tout ses membres. Pour modifier le(s) groupe(s) dont vous faites parti, nous vous conseillons de vous retirer temporairement de ce groupe afin de ne pas être déconnecté à chaque modification. <strong>Prenez-garde de toujours être dans un groupe vous permettant de conserver l'accès à cette interface.</strong>"
 }

@@ -14,7 +14,7 @@
     <tbody class="divide-y divide-gray-200 bg-white">
       <template v-for="(roles, subject) in rolesBySubject">
         <tr class="border-t border-gray-200" v-if="'null' !== subject">
-          <th colspan="5" scope="colgroup" class="bg-gray-50 py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-3">{{ subject }}</th>
+          <th :colspan="groups.length + 1" scope="colgroup" class="bg-gray-50 py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-3">{{ subject }}</th>
         </tr>
         <tr class="divide-x divide-gray-200" v-for="role in roles">
           <td class="whitespace-nowrap py-2 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-3">{{ role.name }}</td>
@@ -35,7 +35,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
@@ -53,12 +52,7 @@ const rolesBySubject = props.roles.reduce((acc, role) => {
   return acc;
 }, {});
 
-onMounted(() => {
-  console.log(rolesBySubject);
-})
-
 function toggle(role, group, $event) {
-  console.log(role, group, $event.target.checked);
   axios.post('/admin/group/matrix/toggle?entityId=' + group.id, { role_id: role.id })
     .then(response => {
       if ($event.target.checked !== response.data['checked']) {
